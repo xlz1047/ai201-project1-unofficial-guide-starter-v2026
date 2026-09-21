@@ -122,14 +122,22 @@ If you're someone who needs quiet to work, the library is open until 2am during 
 <!-- One complete question and answer, pasted as text, with the source line
      visible. Milestone 4. -->
 
-**Question:**
+**Question:** How late can I declare a course pass/fail?
 
-**Answer:**
+**Answer:** You can declare a course pass/fail as late as week eight, after
+you've seen your midterm.
 
-```
-```
+Source: `admin_pass_fail_option.txt`
 
 **My relevance cutoff:**
+
+I kept `TOP_K = 5` because the correct chunk was the first result for all
+three spot checks, while the additional results still provided useful nearby
+context without hiding the best match. The best in-corpus distances ranged
+from `0.1845` to `0.2549`. The best out-of-scope distance was `0.8246`, so I
+kept `THRESHOLD = 0.6`, in the clear gap between the two groups. At this
+cutoff, all five in-corpus questions pass and all five out-of-scope questions
+are refused.
 
 <!-- The number you set in config.py, and how you got there.
 
@@ -142,7 +150,22 @@ If you're someone who needs quiet to work, the library is open until 2am during 
 
 | Question | In corpus? | Best distance |
 |---|---|---|
-|  |  |  |
+| Is the housing lottery random, and what determines the order? | Yes | 0.2549 |
+| How late can I declare a course pass/fail? | Yes | 0.2075 |
+| How many hours per week should I expect to spend outside class for CS 210? | Yes | 0.2501 |
+| How long are the wait times at Halden Hall, and what time does it close? | Yes | 0.1845 |
+| When do west-lot parking permits go on sale, and how quickly do they sell out? | Yes | 0.2203 |
+| What is the capital of Mongolia? | No | 0.8246 |
+| How do I change the oil in a diesel engine? | No | 0.9340 |
+| Who won the 1994 World Cup? | No | 0.8859 |
+| What is the recommended dosage of ibuprofen for a headache? | No | 0.8442 |
+| How do I write a for loop in Rust? | No | 0.8960 |
+
+The existing `GROUNDING_INSTRUCTION` in `generate.py` was strict enough for
+this corpus: it says to use only the supplied documents, refuse to guess when
+the documents do not cover the question, and name the source filename. The
+`--show-prompt` check confirmed that instruction and the filename-tagged
+excerpts were both sent to the model.
 
 ## How I Used AI
 

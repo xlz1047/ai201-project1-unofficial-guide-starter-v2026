@@ -23,8 +23,9 @@ For at least 4 of my 5 test questions, the retrieved chunks include one that
 contains the answer.
 
 **Why this target:**
-<!-- e.g. "One of my questions is about a topic only two documents mention, so
-     I expect that one to be hard." -->
+Most `campus_life` documents are short posts where the useful fact is usually
+in one sentence, so I expect retrieval to work for most questions. I left one
+question as room for an unusually weak match or a topic with less coverage.
 
 ---
 
@@ -33,8 +34,10 @@ contains the answer.
 Every answer the system produces names at least one source document.
 
 **Why this target:**
-<!-- Why all five and not four? What about your setup makes that achievable —
-     or what would have to go wrong for it not to be? -->
+The pipeline keeps each retrieved chunk's source filename with the context
+given to generation, so naming a source should be achievable for every answer.
+I chose all five because an answer without a source is not useful for checking
+short factual posts.
 
 ---
 
@@ -50,28 +53,25 @@ in at least 4 of 5 tries.
      just keep five of them, or the "4 of 5" above has nothing to be 4 of. -->
 
 **Why this target:**
-<!-- What did your distances look like when you set the cutoff in Milestone 4?
-     Was there a clean gap, or did the two groups overlap? -->
+The five out-of-scope questions are from unrelated domains, while this corpus
+is narrowly about university life. A target of 4 of 5 allows for one accidental
+semantic match while still requiring the gate to reject nearly all unrelated
+questions.
 
 ---
 
 ## 4. Something about your chunks
 
-<!-- YOU WRITE THIS ONE.
-
-     How would you know if your chunks were the right size? Name something
-     countable or observable.
-
-     Examples of the right shape — don't copy these, they should come from
-     what you actually saw in Milestone 3:
-       - "At least 4 of 5 sampled chunks read as a complete thought, with no
-          sentence cut in half at either end."
-       - "No chunk is shorter than 200 characters, since anything below that
-          in my corpus turned out to be a heading with no content under it." -->
+At least 4 of 5 sampled chunks should read as a complete thought, with no
+sentence cut in half at either end.
 
 
 
 **Why this target:**
+The documents I read are short posts with one or two paragraphs, so a useful
+chunk should normally contain a whole fact rather than a fragment. Four of five
+allows for one boundary case while still checking that chunking fits this
+corpus.
 
 
 
@@ -79,17 +79,16 @@ in at least 4 of 5 tries.
 
 ## 5. Your choice
 
-<!-- YOU WRITE THIS ONE TOO.
-
-     Pick something you actually care about getting right. It could be about
-     speed, about refusals, about a particular kind of question your corpus
-     handles badly, about source attribution being correct rather than merely
-     present — anything, as long as it names a number or an observable
-     outcome. -->
+For at least 4 of 5 in-corpus questions, the answer should name the source
+document that contains the fact used in the answer, not just an unrelated
+retrieved document.
 
 
 
 **Why this target:**
+Source accuracy matters because several posts cover similar university topics,
+and a filename is only useful if it points to the evidence. Four of five keeps
+the target demanding while allowing one possible attribution mistake.
 
 
 

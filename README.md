@@ -1,6 +1,6 @@
 # The Unofficial Guide
 
-<!-- Replace this line with your name and which corpus you picked. -->
+<!-- Add your name before submitting. Corpus picked: campus_life. -->
 
 > **This file is your submission.** Fill it in as you go — most sections get
 > written during the milestone that produces them, not at the end.
@@ -21,16 +21,28 @@
 
 ## What This Does
 
-<!-- Three or four sentences. Which corpus you picked, and the kinds of
-     questions your system answers. Write it for someone who has never seen
-     this repo.
+This project answers questions about campus life using the `campus_life`
+corpus. The documents are short student-life posts about housing, dining,
+courses, registration, and other university rules or routines. The system
+retrieves relevant documents, checks whether the question is covered, and
+generates an answer with the source filenames. In the starter run, the
+question "is the housing lottery random?" returned an answer from
+`admin_housing_lottery.txt`.
 
-     Milestone 5. -->
+**Milestone 1 check:** `campus_life` indexed 88 documents into 88 chunks, and
+the housing-lottery question completed end to end with a best distance of
+`0.254` (cutoff `0.6`). The required `advice_threads` activity reported
+`26` chunks total.
 
 ## Chunking Strategy
 
 **Chunk size:**
 **Overlap:**
+
+Milestone 1 observation: the four documents I read were short posts, usually
+one or two paragraphs, with the useful fact concentrated in a sentence or
+small paragraph. I will use this observation when choosing chunk settings in
+Milestone 3.
 
 <!-- What about YOUR documents made you pick these numbers? Short posts and
      long sectioned guides don't want the same chunking, and "800 seemed
